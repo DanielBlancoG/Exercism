@@ -50,7 +50,9 @@ export function ticketStatus(tickets, ticketId) {
  * @returns {string} ticket status
  */
 export function simpleTicketStatus(tickets, ticketId) {
-  throw new Error("Remove this line and implement the function");
+  const value = tickets[ticketId];
+  if (value === null || value === undefined) return "invalid ticket !!!";
+  return value;
 }
 
 /**
@@ -60,5 +62,5 @@ export function simpleTicketStatus(tickets, ticketId) {
  * @returns {string | undefined} version
  */
 export function gtcVersion(visitor) {
-  throw new Error("Remove this line and implement the function");
+  if (visitor.gtc !== undefined) return visitor.gtc.version; 
 }
