@@ -17,19 +17,33 @@ export function preparationTime(layers, timePerLayer) {
 
 /* Calculate the amount of sauce and noodles needed */
 export function quantities(ingredients) {
-  const count = ingredients.reduce((acc, ingredient) => {
-    if (ingredient === "noodles") acc.noodles += 50;
-    if (ingredient === "sauce") acc.sauce += 0.2;
-    return acc;
-  }, {
-    noodles : 0,
-    sauce: 0
-  });
+  const count = ingredients.reduce(
+    (acc, ingredient) => {
+      if (ingredient === "noodles") acc.noodles += 50;
+      if (ingredient === "sauce") acc.sauce += 0.2;
+      return acc;
+    },
+    {
+      noodles: 0,
+      sauce: 0,
+    }
+  );
 
   return count;
 }
 
 /* Add the secret ingredient */
-export function addSecretIngredient(){
-    
+export function addSecretIngredient(friendList, myOwnRecipe) {
+  myOwnRecipe.push(friendList[friendList.length - 1]);
 }
+
+/* Scale the recipe */
+export function scaleRecipe(recipe_2_portions, number_portions){
+  return Object.fromEntries(
+    Object.entries(recipe_2_portions).map(([k, v]) => [
+      k,
+      (v * number_portions) / 2,
+    ])
+  );
+}
+
