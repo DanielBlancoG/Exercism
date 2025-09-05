@@ -4,5 +4,5 @@
 //
 
 export const isLeap = (date) => {
-  return Number.isInteger(date / 4) && (Number.isInteger(date / 100) || Number.isInteger(date / 400));
+  return date % 4 === 0 && (date % 100 !== 0 || date % 400 === 0);
 };
