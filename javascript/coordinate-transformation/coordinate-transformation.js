@@ -57,10 +57,9 @@ export function composeTransform(f, g) {
  */
 export function memoizeTransform(f) {
   let cache = null;
-
   return (x, y) => {
     if (!cache || cache.x !== x || cache.y !== y) {
-      cache = { x, y, result : f(x, y)}
+      cache = { x, y, result: f(x, y) };
     }
     return cache.result;
   };
