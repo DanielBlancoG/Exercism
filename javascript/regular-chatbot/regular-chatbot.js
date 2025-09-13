@@ -40,7 +40,11 @@ export function checkPhoneNumber(number) {
  * @returns {string[] | null} all the possible URL's that the user may have answered
  */
 export function getURL(userInput) {
-  throw new Error("Remove this line and implement the function");
+  return userInput !== undefined
+    ? userInput.match(
+        /\b(?:www\.)?(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+(?:[a-z]{2,}|xn--[a-z0-9-]{1,59})\b/gi
+      )
+    : null;
 }
 
 /**
@@ -50,5 +54,6 @@ export function getURL(userInput) {
  * @returns {string} Greeting from the chatbot
  */
 export function niceToMeetYou(fullName) {
-  throw new Error("Remove this line and implement the function");
+  return `Nice to meet you, ${fullName.split(/, +/).reverse().join(" ")}`;
 }
+
