@@ -1,6 +1,5 @@
 // @ts-check
 
-
 /**
  * Create an appointment
  *
@@ -10,7 +9,7 @@
  * @returns {Date} the appointment
  */
 export function createAppointment(days, now = undefined) {
-  const start = new Date(now ?? Date.now());
+  const start = new Date(now ?? Date.now()); /* Dominar a profundidad */
   const millisecondsPerDay = 24 * 60 * 60 * 1000;
   return new Date(start.getTime() + days * millisecondsPerDay);
 }
@@ -52,7 +51,16 @@ export function getAppointmentDetails(timestamp) {
  *
  * @returns {Record<'year' | 'month' | 'date' | 'hour' | 'minute', number>} the appointment details
  */
+
 export function updateAppointment(timestamp, options) {
+  const newDate = new Date(timestamp);
+  if (options.year != null) newDate.setFullYear(options.year);
+  if (options.month != null) newDate.setMonth(options.month);
+  if (options.date != null) newDate.setDate(options.date);
+  if (options.hour != null) newDate.setHours(options.hour);
+  if (options.minute != null) newDate.setMinutes(options.minute);
+  /* Rehuse the previous function to safe lines of code */
+  return getAppointmentDetails(newDate.toISOString());
 }
 
 /**
@@ -64,7 +72,7 @@ export function updateAppointment(timestamp, options) {
  * @returns {number} amount of seconds (rounded)
  */
 export function timeBetween(timestampA, timestampB) {
-  throw new Error("Remove this line and implement the function");
+  return Math.round((new Date(timestampB).getTime() - new Date(timestampA).getTime()) / 1000);
 }
 
 /**
@@ -74,5 +82,5 @@ export function timeBetween(timestampA, timestampB) {
  * @param {string} currentTimestamp (ISO 8601)
  */
 export function isValid(appointmentTimestamp, currentTimestamp) {
-  throw new Error("Remove this line and implement the function");
+  return new Date(appointmentTimestamp) > new Date(currentTimestamp);
 }
