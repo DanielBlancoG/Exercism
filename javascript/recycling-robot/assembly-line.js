@@ -102,7 +102,7 @@ export function assertHasId(object) {
 }
 
 /**
- * Checks if a value has an "id" property.
+ * Checks if a value has an "id" property...
  *
  * @param {object} object
  * @returns {boolean} whether the input has an "id" property.
