@@ -66,7 +66,7 @@ export function isElectronic(object) {
  * @returns {boolean} whether the input is a non empty array.
  */
 export function isNonEmptyArray(value) {
-  return (Array.isArray(value) && value !== null && value.length !== 0);
+  return Array.isArray(value) && value !== null && value.length !== 0;
 }
 
 /**
@@ -76,7 +76,7 @@ export function isNonEmptyArray(value) {
  * @returns {boolean} whether the input is an empty array.
  */
 export function isEmptyArray(value) {
-  return (Array.isArray(value) && value.length === 0);
+  return Array.isArray(value) && value.length === 0;
 }
 
 /**
@@ -86,7 +86,7 @@ export function isEmptyArray(value) {
  * @returns {boolean} whether the input has a "type" property or method.
  */
 export function hasType(object) {
-  throw new Error('Remove this line and implement the hasType function');
+  return "type" in object;
 }
 
 /**
@@ -96,7 +96,9 @@ export function hasType(object) {
  * @returns {never|void} undefined if the input has an "id" property or method, otherwise throws an error.
  */
 export function assertHasId(object) {
-  throw new Error('Remove this line and implement the assertHasId function');
+  if (!("id" in object)) {
+    throw new Error("Object is missing the 'id' property");
+  }
 }
 
 /**
@@ -106,7 +108,7 @@ export function assertHasId(object) {
  * @returns {boolean} whether the input has an "id" property.
  */
 export function hasIdProperty(object) {
-  throw new Error('Remove this line and implement the hasIdProperty function');
+  return Object.hasOwn(object, "id");
 }
 
 /**
@@ -116,5 +118,5 @@ export function hasIdProperty(object) {
  * @returns {boolean} whether the input has a defined "type" property.
  */
 export function hasDefinedType(object) {
-  throw new Error('Remove this line and implement the hasDefinedType function');
+  return Object.hasOwn(object, "type") && object.type !== undefined;
 }

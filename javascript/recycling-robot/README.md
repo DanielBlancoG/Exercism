@@ -115,7 +115,7 @@ class Coffee {
 
 const espresso = new Coffee();
 
-'temperature' in espresso;
+'temperature' in espresso; 
 // => true
 
 'color' in espresso;
